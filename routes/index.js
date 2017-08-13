@@ -1,4 +1,4 @@
-function index(req, res) {
+function index(req, res, next) {
     res.sendFile("/public/index.html");
 }
 

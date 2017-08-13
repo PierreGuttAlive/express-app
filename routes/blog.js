@@ -1,4 +1,4 @@
-function blog(req, res) {
+function blog(req, res, next) {
     res.sendFile("/public/blog.html");
 }
 

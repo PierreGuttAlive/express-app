@@ -1,4 +1,4 @@
-function addComent(req, res) {
+function addComent(req, res, next) {
 
 };
 

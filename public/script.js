@@ -20,7 +20,7 @@ function checkComents() {
             
             for (var coment in db) {
                 var newLine = document.createElement("div");
-                newLine.innerHTML = db[coment];
+                newLine.innerHTML = db[coment].message;
                 newLine.className = "newLine";
                 wrapper.appendChild(newLine);
                  if (!coments.firstChild) {
@@ -48,9 +48,18 @@ function addReq(form) {
         return false;
     };
 
+    var preDate = new Date();
+    var date = preDate.getHours()+":"+preDate.getMinutes()+" "+preDate.getDate()+"."+preDate.getMonth() + 1+"."+preDate.getFullYear();
+    
+    var request = {
+        message: input,
+        time: date
+    };
+
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "addcoment", true);
-    xhr.send(input);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(request));
 
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {

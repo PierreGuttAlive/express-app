@@ -1,4 +1,13 @@
 extends layout
 
 block content
-    p Blog will be here soon
+        .wrapper
+            br
+            p.cnt Ты волен писать здесь все, что захочешь
+            br
+            form.form(action="" method="post")
+                .input-submit
+                    input(type="text" name="input" class="form-input" placeholder="Введи сюда текст" action="/addcoment")
+                    input(type="button" class="form-submit" value="жмак")
+                .coments
+        script(src="script.js")

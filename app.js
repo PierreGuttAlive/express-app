@@ -1,4 +1,5 @@
 var express = require("express");
+var app = express();
 var path = require("path");
 var bodyParser = require("body-parser");
 var pug = require("pug");
@@ -8,8 +9,6 @@ var blog = require("./routes/blog.js");
 var uploadComents = require("./routes/uploadComents.js");
 var addComent = require("./routes/addComent.js");
 
-var app = express();
-
 var portNumber = 3000;
 
 // Use stuff
@@ -17,8 +16,9 @@ app.set("views", "./views");
 app.set("view engine", "pug");
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 // Routes
 

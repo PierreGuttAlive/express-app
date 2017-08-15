@@ -2,10 +2,9 @@ var fs = require("fs");
 
 function addComent(req, res, next) {
     var date = new Date();
-    console.log("--------------------- " + date);
+    console.log("--------------------------------------------------- ");
     console.log(req.body);
-    console.log(typeof req.body);
-    console.log("---------------------");
+    console.log("--------------------------------------------------- ");
 
     // gaining coments and pushing new in a massive
     try {

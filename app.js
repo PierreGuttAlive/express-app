@@ -9,7 +9,7 @@ var blog = require("./routes/blog.js");
 var uploadComents = require("./routes/uploadComents.js");
 var addComent = require("./routes/addComent.js");
 
-var portNumber = 3000;
+var portNumber = 80;
 
 // Use stuff
 app.set("views", "./views");

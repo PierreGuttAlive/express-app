@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title 
+        meta(charset="utf-8")
+        link(href="style.css" type="text/css" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css?family=Metamorphous" rel="stylesheet")
+        link(rel="shortcut icon" href="favicon.ico" type="image/x-icon")
+    body
+        div(class="topBar")
+            a(href="/" style="color:AliceBlue;text-decoration:none")
+                li(class="navigationBar") Жмак на главную
+            a(href="/blog" style="color:AliceBlue;text-decoration:none")
+                li(class="navigationBar") Блог
+            a(href="random_pic.html" style="color:AliceBlue;text-decoration:none")
+                li(class="navigationBar") Рандом пик
+            a(href="find_me.html" style="color:AliceBlue;text-decoration:none")
+                li(class="navigationBar") Где можно меня найти
+            a(href="donate.html" style="color:AliceBlue;text-decoration:none")
+                li(class="navigationBar") Донат
+
+        block content

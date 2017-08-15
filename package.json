@@ -9,6 +9,8 @@
   "author": "iwan.ku96@yandex.ru",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.3"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "pug": "^2.0.0-rc.3"
   }
 }

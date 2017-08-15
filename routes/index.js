@@ -1,5 +1,7 @@
+var path = require("path");
+
 function index(req, res, next) {
-    res.sendFile("/public/index.html");
+    res.render("index.pug")
 }
 
 module.exports = index;

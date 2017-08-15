@@ -1,5 +1,7 @@
+var path = require("path")
+
 function blog(req, res, next) {
-    res.sendFile("/public/blog.html");
+    res.render("blog.pug")
 }
 
 module.exports = blog;

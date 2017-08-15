@@ -1,7 +1,8 @@
 var fs = require("fs");
 
-function uploadComments(req, res, next){
-    res.sendFile("/coments.json");
+function uploadComents(req, res, next) {
+    coments = fs.readFileSync("./coments.json");
+    res.send(coments);
 };
 
-module.exports = uploadComments;
+module.exports = uploadComents;

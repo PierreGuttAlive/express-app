@@ -20,6 +20,7 @@ body {
 	width: 80%;
 	margin: 0 auto;
 	padding-left: 20px;
+	padding-top: 20px;
 	border-left: 2px solid #26a2ab;
 }
 
@@ -85,7 +86,7 @@ a {
 	left: 300px;
 }
 
-button {
+.btn {
   border: 0;
   background: #0087cc;
   border-radius: 4px;
@@ -99,7 +100,7 @@ button {
   transition: all .1s linear;
 }
 
-button:active {
+.btn:active {
   box-shadow: 0 2px 0 #006599;
   transform: translateY(3px);
 }
@@ -179,4 +180,9 @@ button:active {
 	font-weight: 30px;
 	color: black;
 	margin: 5px auto;
+}
+
+.registration-form label, .registration-form input {
+	display: block;
+	margin: 5px;
 }

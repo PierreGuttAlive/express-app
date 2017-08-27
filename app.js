@@ -3,29 +3,60 @@ var app = express();
 var path = require("path");
 var bodyParser = require("body-parser");
 var pug = require("pug");
+var favicon = require('serve-favicon');
+var session = require("express-session");
+var mongo = require("mongodb");
+var monk = require("monk");
+var db = monk('localhost:27017/express_app');
+db.then(() => {
+    console.log('Connected correctly to database');
+});
 
-var index = require("./routes/index.js");
-var blog = require("./routes/blog.js");
-var uploadComents = require("./routes/uploadComents.js");
-var addComent = require("./routes/addComent.js");
+// Some routes
+
+var index = require("./routes/index");
+var blog = require("./routes/blog");
+var uploadComents = require("./routes/uploadComents");
+var addComent = require("./routes/addComent");
+var userList = require("./routes/userList");
+var auth = require("./routes/auth");
 
 var portNumber = 80;
 
-// Use stuff
+// Engines and basic middlewares
+
 app.set("views", "./views");
 app.set("view engine", "pug");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+    secret: "Алина"
+}));
+app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
+app.get("/", (req, res, next) =>{
+    console.log(req.session);
+    if (!req.session.user) req.session.user = {};
+    if (!req.session.user.visitNumber) req.session.user.visitNumber = 1;
+    else req.session.user.visitNumber++;
+    console.log(req.session.user.visitNumber);
+    next();
+})
 
 
-// Routes
+// Connecting routes
 
 app.get("/", index);
 app.get("/blog", blog)
 app.post("/addcoment", addComent);
 app.get("/uploadcoments", uploadComents);
+app.get("/userlist", userList);
+app.use("/auth", auth);
 
 app.listen(portNumber, () => {
     console.log("Server is now listening on port: " + portNumber);

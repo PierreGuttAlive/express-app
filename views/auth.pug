@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+    .main-wrapper
+        case logged
+            when false
+                form.registration-form(method="POST" action="/auth")
+                    label(for="username") Введите уникальное имя пользователя: 
+                    input(type="text" name="username")
+                    label(for="email") Введите ваш email:
+                    input(type="text" name="email")
+                    label(for="password") Введите пароль: 
+                    input(type="text" name="password")
+                    label(for="confpassword") Подтвердите пароль: 
+                    input(type="text" name="confpassword")
+                    input.btn(type="submit" value="Отправить")

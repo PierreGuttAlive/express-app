@@ -15,5 +15,5 @@ For using this application you must have installed, settled and ready to go Mong
 To start app:
 
 1) start and connect the MongoDB
-2) in the root directory of this project input this in your terminal: "npm install" and then do "npm start"
+2) in the root directory of this project input this in your terminal: "npm install" and then do "node app"
 3) open your browser and go to the "localhost:80"

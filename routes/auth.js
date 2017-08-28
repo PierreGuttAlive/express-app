@@ -38,6 +38,13 @@ router.post("/", function(req, res, next){
         pass.reason = "Пароли не совпадают.";
     };
 
+    // Correct email
+
+    if (!validator.isEmail(body.email)){
+        pass.attempt = false;
+        pass.reason = "Некорректный email.";
+    };
+
     //Checking for username or email matches
 
     usercollection.find({})
@@ -57,7 +64,7 @@ router.post("/", function(req, res, next){
                 usercollection.insert(body);
                 res.send("Вы успешно зарегистрированы, " + body.username + ". Добро пожаловать!");
             } else {
-                res.send(pass.reason + " Вернитесь на страницу регистрации.");
+                res.send(pass.reason + " Пожалуйста вернитесь на страницу регистрации.");
             };
         });
 });

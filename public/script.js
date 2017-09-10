@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", checkComents);
 function checkComents() {
 
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "uploadcoments", true);
+    xhr.open("GET", "/blog/uploadcoments", true);
     xhr.send();
     xhr.onreadystatechange = () => {
 
@@ -57,7 +57,7 @@ function addReq(form) {
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "addcoment", true);
+    xhr.open("POST", "/blog/addcoment", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(request));
 

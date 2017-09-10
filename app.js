@@ -16,12 +16,10 @@ db.then(() => {
 
 var index = require("./routes/index");
 var blog = require("./routes/blog");
-var uploadComents = require("./routes/uploadComents");
-var addComent = require("./routes/addComent");
 var userList = require("./routes/userList");
 var auth = require("./routes/auth");
 
-var portNumber = 80;
+var portNumber = 3000;
 
 // Engines and basic middlewares
 
@@ -46,15 +44,13 @@ app.get("/", (req, res, next) =>{
     else req.session.user.visitNumber++;
     console.log(req.session.user.visitNumber);
     next();
-})
+});
 
 
 // Connecting routes
 
 app.get("/", index);
-app.get("/blog", blog)
-app.post("/addcoment", addComent);
-app.get("/uploadcoments", uploadComents);
+app.use("/blog", blog);
 app.get("/userlist", userList);
 app.use("/auth", auth);
 

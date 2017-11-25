@@ -2,6 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const express = require("express");
 let router = express.Router();
+let posts = require("../db").get("posts");
 
 router.get("/", (req, res, next) => {
     console.log("fuck");
@@ -11,7 +12,10 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/uploadcoments", (req, res, next) => {
-    res.send(fs.readFileSync("./coments.json"));
+    //res.send(fs.readFileSync("./coments.json"));
+    posts.find({}).then((posts) => {
+        res.send(posts);
+    })
 });
 
 router.post("/addcoment", (req, res, next) => {
@@ -22,12 +26,16 @@ router.post("/addcoment", (req, res, next) => {
 
     // gaining coments and pushing new in a massive
     try {
-        var buffer = fs.readFileSync("./coments.json");
+        /*var buffer = fs.readFileSync("./coments.json");
         var coments = JSON.parse(buffer);
 
         coments.push(req.body);
         fs.writeFileSync("coments.json", JSON.stringify(coments, null, " "));
-        res.status(200).end();
+        posts.insert(coments);
+        res.status(200).end();*/
+        posts.insert(req.body).then(() => {
+            res.status(200).end();
+        })
     } catch(err) {
         res.status("500").send("something went wrong");
     };

@@ -33,12 +33,12 @@ app.use(session({
     secret: "Алина"
 }));
 app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(function(req,res,next){
+/*app.use(function(req,res,next){
     req.db = db;
     next();
-});
+});*/
 app.get("/", (req, res, next) =>{
-    console.log(req.session);
+    //console.log(req.session);
     if (!req.session.user) req.session.user = {};
     if (!req.session.user.visitNumber) req.session.user.visitNumber = 1;
     else req.session.user.visitNumber++;

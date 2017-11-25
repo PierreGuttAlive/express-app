@@ -1,7 +1,7 @@
 function userList(req, res, next) {
-    var db = req.db;
-    var usercollection = db.get("usercollection");
-    usercollection.find({}, {}, (err, docs) => {
+    
+    var users = require("../db").get("usercollection");
+    users.find({}, {}, (err, docs) => {
         if (err) throw err
         else res.send(docs);
     });

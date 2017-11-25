@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var validator = require("validator");
+var users = require("../db").get("users");
 
 
 
@@ -19,8 +20,6 @@ router.post("/", function(req, res, next){
         attempt: true
     };
     var body = req.body;
-    var db = req.db;
-    var usercollection = db.get("usercollection");
 
     // Checking fileds to be filled
 
@@ -47,7 +46,7 @@ router.post("/", function(req, res, next){
 
     //Checking for username or email matches
 
-    usercollection.find({})
+    users.find({})
         .then((docs) => {
             for (var i = 0; i < docs.length; i++) {
                 if (docs[i].username == body.username) {
@@ -61,7 +60,7 @@ router.post("/", function(req, res, next){
         })
         .then(() => {
             if (pass.attempt === true) {
-                usercollection.insert(body);
+                users.insert(body);
                 res.send("Вы успешно зарегистрированы, " + body.username + ". Добро пожаловать!");
             } else {
                 res.send(pass.reason + " Пожалуйста вернитесь на страницу регистрации.");

@@ -16,7 +16,7 @@ var blog = require("./routes/blog");
 var userList = require("./routes/userList");
 var auth = require("./routes/auth");
 
-var portNumber = 3000;
+var portNumber = 80;
 
 // Engines and basic middlewares
 

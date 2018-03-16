@@ -7,10 +7,7 @@ var favicon = require('serve-favicon');
 var session = require("express-session");
 var mongo = require("mongodb");
 var monk = require("monk");
-var db = monk('localhost:27017/express_app');
-db.then(() => {
-    console.log('Connected correctly to database');
-});
+
 
 // Some routes
 
